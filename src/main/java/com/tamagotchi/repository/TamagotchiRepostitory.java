@@ -1,8 +1,8 @@
-package com.tamagotchi.tamagotchi.repository;
+package com.tamagotchi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tamagotchi.tamagotchi.entity.Puppy;
+import com.tamagotchi.entity.Puppy;
 
 public interface TamagotchiRepostitory extends JpaRepository < Puppy, Integer > {
     

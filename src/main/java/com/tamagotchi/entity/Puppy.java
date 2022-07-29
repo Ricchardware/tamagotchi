@@ -1,4 +1,4 @@
-package com.tamagotchi.tamagotchi.entity;
+package com.tamagotchi.entity;
 
 import java.sql.Timestamp;
 

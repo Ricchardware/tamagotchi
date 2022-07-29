@@ -1,4 +1,4 @@
-package com.tamagotchi.tamagotchi.controller;
+package com.tamagotchi.controller;
 
 import java.util.Map;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tamagotchi.tamagotchi.entity.Puppy;
-import com.tamagotchi.tamagotchi.service.TamagotchiService;
+import com.tamagotchi.entity.Puppy;
+import com.tamagotchi.service.TamagotchiService;
 
 @RestController
 @CrossOrigin

@@ -1,4 +1,4 @@
-package com.tamagotchi.tamagotchi.service;
+package com.tamagotchi.service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -8,8 +8,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tamagotchi.tamagotchi.entity.Puppy;
-import com.tamagotchi.tamagotchi.repository.TamagotchiRepostitory;
+import com.tamagotchi.entity.Puppy;
+import com.tamagotchi.repository.TamagotchiRepostitory;
 
 @Service
 public class TamagotchiServiceImpl implements TamagotchiService {

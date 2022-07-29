@@ -1,8 +1,8 @@
-package com.tamagotchi.tamagotchi.service;
+package com.tamagotchi.service;
 
 import java.util.Map;
 
-import com.tamagotchi.tamagotchi.entity.Puppy;
+import com.tamagotchi.entity.Puppy;
 
 public interface TamagotchiService {
 
