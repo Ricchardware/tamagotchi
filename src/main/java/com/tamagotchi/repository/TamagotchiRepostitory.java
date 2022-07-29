@@ -14,5 +14,8 @@ public interface TamagotchiRepostitory extends JpaRepository < Puppy, Integer > 
 
     @Transactional
     Puppy findByNameAndOwner(String name, String owner );
+
+    @Transactional
+    Puppy findByOwner(String owner);
     
 }

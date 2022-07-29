@@ -9,8 +9,16 @@ import lombok.AllArgsConstructor;
 public enum PuppyStatus {
 
     ABANDONED ( "abandoned"),
-    DIED ( "died"),
+    DIED_OF_HUNGER ( "died_of_hunger"),
+    DIED_OF_SADNESS ( "died_of_sadness"),
+    DIED_OF_IGENE ( "died_of_igene"),
+    DIED_OF_SLEEP_DEPRIVATION ( "died_of_sleep_deprivation"),
     ALIVE ( "alive" ),
+    TIRED ( "tired" ),
+    DIRTY ( "dirty"),
+    HUNGRY ( "hungry "),
+    SAD ( "sad" ),
+
     ;
 
 

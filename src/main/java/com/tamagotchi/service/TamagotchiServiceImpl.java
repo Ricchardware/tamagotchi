@@ -2,7 +2,9 @@ package com.tamagotchi.service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.tamagotchi.entity.Puppy;
 import com.tamagotchi.models.PuppyStatus;
 import com.tamagotchi.repository.TamagotchiRepostitory;
+import com.tamagotchi.tools.IsPuppyOk;
 
 @Service
 public class TamagotchiServiceImpl implements TamagotchiService {
@@ -45,7 +48,7 @@ public class TamagotchiServiceImpl implements TamagotchiService {
         // ? If the owner already has a puppy, this condition will inform the user of the situation
         // ?  to manage this front end needs to ask for confirm and if its confirmed, needs to call
         // ?  thisTamagotchiIsHomeless to delete the current puppy and then call givingABirth again
-        if ( tamagotchiRepostitory.findByNameAndOwner(puppy.getName(), puppy.getOwner()) != null){
+        if ( tamagotchiRepostitory.findByOwner( puppy.getOwner()) != null){
 
             message.put ( "This owner already has a puppy: ask for connfirm on overwrting", puppy );
             return message;
@@ -89,25 +92,55 @@ public class TamagotchiServiceImpl implements TamagotchiService {
         message.put ( "Your Tamagotchi:", tamagotchi ); 
         return message;
     }
-    //;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    
 
+    
 
-
-    //UPDATE:::::::::::::::::::::
     @Override 
-    public Map < String, Puppy > howIsThePuppy ( Puppy puppy ){
+    public Map < String, List < String > > howIsThePuppy ( Puppy puppy ){
 
-        Map < String, Puppy > message = new HashMap<>();
+        Map < String, List <String > > message = new HashMap<>();
 
         Puppy tamagotchi = tamagotchiRepostitory.findByNameAndOwner(puppy.getName(), puppy.getOwner());
-        
-        
-        
 
-        message.put ( puppy.getStatus(), tamagotchi);
+        List < String > statuses = new ArrayList<>();
 
+
+        
+        String status = IsPuppyOk.isItHungry ( tamagotchi ) ;
+        if ( !status.equals("") || !status.isBlank() )
+            statuses.add ( status );
+            
+        status = IsPuppyOk.isItDirty(tamagotchi);
+        if ( !status.equals("") || !status.isBlank() )
+            statuses.add ( status );
+
+        status = IsPuppyOk.isItTired ( tamagotchi );
+        if ( !status.equals("") || !status.isBlank() )
+            statuses.add ( status );
+
+        status = IsPuppyOk.isItSad(tamagotchi);
+        if ( !status.equals("") || !status.isBlank() )
+            statuses.add ( status );
+
+
+        for ( String heDead : statuses )
+            if ( heDead.equals(PuppyStatus.DIED_OF_HUNGER.value()) ||
+                 heDead.equals(PuppyStatus.DIED_OF_IGENE.value()) ||
+                 heDead.equals(PuppyStatus.DIED_OF_SADNESS.value()) ||
+                 heDead.equals(PuppyStatus.DIED_OF_SLEEP_DEPRIVATION.value())) {
+
+                    tamagotchiRepostitory.deleteById(tamagotchi.getId());
+
+                    message.put ( tamagotchi.getName() + " has perished and been deleted from database", statuses);
+                    return message;
+                 }
+
+        message.put ( tamagotchi.getName(), statuses );
         return message;
+
     }
+    //;;;;;;;;;;;;;;;;;;;;;;;;;
 
     //DELETE:::::::::::::::::::
     @Override
@@ -149,8 +182,8 @@ public class TamagotchiServiceImpl implements TamagotchiService {
             message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi is homeless" );
         
             
-        if ( status.equals(PuppyStatus.DIED.value()) )
-            message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi has perished" );
+        /*if ( status.equals(PuppyStatus.DIED.value()) )
+            message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi has perished" );*/
            
          return message;
     }

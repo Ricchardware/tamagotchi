@@ -1,5 +1,6 @@
 package com.tamagotchi.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.tamagotchi.entity.Puppy;
@@ -13,7 +14,7 @@ public interface TamagotchiService {
     public Map < String, Puppy > gimmeThePuppy ( Puppy puppy );
 
     //UPDATE
-    public Map < String, Puppy > howIsThePuppy ( Puppy puppy );
+    public Map < String, List < String > > howIsThePuppy ( Puppy puppy );
 
     //DELETE
     public Map < String, String > murderThePuppy ( Puppy puppy, String status );

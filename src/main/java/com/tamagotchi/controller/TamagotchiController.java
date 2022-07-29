@@ -1,5 +1,6 @@
 package com.tamagotchi.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,10 +43,8 @@ public class TamagotchiController {
     }
 
 
-
-    //UPDATE::::::::::::::::::::::::::::::
-    @PutMapping ( "/howbadisit")
-    public Map < String, Puppy > puppyStatus ( @RequestBody Puppy puppy ){
+    @GetMapping ( "/howbadisit")
+    public Map < String, List < String > > puppyStatus ( @RequestBody Puppy puppy ){
 
         return tamagotchiService.howIsThePuppy(puppy);
     }
@@ -64,13 +62,13 @@ public class TamagotchiController {
     }
 
 
-    @DeleteMapping ( "/isdead" )
+    /*@DeleteMapping ( "/isdead" )
     public Map < String, String > thisTamagotchiIsNoMore ( @RequestBody Puppy puppy ){
 
         String status = PuppyStatus.DIED.value();
 
         return tamagotchiService.murderThePuppy(puppy, status);
-    }
+    }*/
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     
 }
