@@ -57,15 +57,6 @@ public class TamagotchiController {
 
         return tamagotchiService.murderThePuppy(puppy );
     }
-
-
-    /*@DeleteMapping ( "/isdead" )
-    public Map < String, String > thisTamagotchiIsNoMore ( @RequestBody Puppy puppy ){
-
-        String status = PuppyStatus.DIED.value();
-
-        return tamagotchiService.murderThePuppy(puppy, status);
-    }*/
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     
 }
