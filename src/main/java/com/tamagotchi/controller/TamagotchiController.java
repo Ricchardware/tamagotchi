@@ -32,6 +32,11 @@ public class TamagotchiController {
     }
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a8ad5322a4c4a8000244eff93f3af4ab6018ea86
     //READ::::::::::::::::::::::::::::::::
     @GetMapping ( "/cutest")
     public Map < String, Puppy > lookForMyPuppy ( @RequestBody Puppy puppy ){
