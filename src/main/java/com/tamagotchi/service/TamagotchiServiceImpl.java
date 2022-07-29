@@ -97,11 +97,11 @@ public class TamagotchiServiceImpl implements TamagotchiService {
 
 
         //Dynamic message based on state
-        if ( status.equals("abandoned") ) 
+        if ( status.equals(PuppyStatus.ABANDONED.value()) ) 
             message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi is homeless" );
         
             
-        if ( status.equals("died") )
+        if ( status.equals(PuppyStatus.DIED.value()) )
             message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi has perished" );
            
          return message;
