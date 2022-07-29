@@ -224,8 +224,6 @@ public class TamagotchiServiceImpl implements TamagotchiService {
 
         puppy.setHappiness(100);
 
-        puppy.setStatus(PuppyStatus.ALIVE.value());
-
         puppy.setBorn(Timestamp.valueOf(LocalDateTime.now()));
 
         puppy.setEat(Timestamp.valueOf(LocalDateTime.now()));

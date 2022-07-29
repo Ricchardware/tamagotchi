@@ -44,9 +44,6 @@ public class Puppy {
     @Column ( name = "clothing_id", nullable = false )
     int clothing;
 
-    @Column ( name = "status" )
-    String status;
-
     @Column ( name = "happiness" )
     int happiness;
 
