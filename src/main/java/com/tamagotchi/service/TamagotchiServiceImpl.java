@@ -130,9 +130,9 @@ public class TamagotchiServiceImpl implements TamagotchiService {
                  heDead.equals(PuppyStatus.DIED_OF_SADNESS.value()) ||
                  heDead.equals(PuppyStatus.DIED_OF_SLEEP_DEPRIVATION.value())) {
 
-                    String dResult = murderThePuppy(tamagotchi).get("delition");
+                    String delResult = murderThePuppy(tamagotchi).get("delition");
 
-                    message.put ( tamagotchi.getName() + " has perished - " + dResult, statuses);
+                    message.put ( tamagotchi.getName() + " has perished - " + delResult, statuses);
                     return message;
                  }
 
