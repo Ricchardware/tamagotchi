@@ -130,9 +130,9 @@ public class TamagotchiServiceImpl implements TamagotchiService {
                  heDead.equals(PuppyStatus.DIED_OF_SADNESS.value()) ||
                  heDead.equals(PuppyStatus.DIED_OF_SLEEP_DEPRIVATION.value())) {
 
-                    tamagotchiRepostitory.deleteById(tamagotchi.getId());
+                    String dResult = murderThePuppy(tamagotchi).get("delition");
 
-                    message.put ( tamagotchi.getName() + " has perished and been deleted from database", statuses);
+                    message.put ( tamagotchi.getName() + " has perished - " + dResult, statuses);
                     return message;
                  }
 
@@ -144,7 +144,7 @@ public class TamagotchiServiceImpl implements TamagotchiService {
 
     //DELETE:::::::::::::::::::
     @Override
-    public Map < String, String > murderThePuppy ( Puppy puppy, String status ) {
+    public Map < String, String > murderThePuppy ( Puppy puppy ) {
 
         Map < String, String > message = new HashMap<>();
 
@@ -152,7 +152,7 @@ public class TamagotchiServiceImpl implements TamagotchiService {
         //Checks if Json has all we need
         if ( isPuppyJsonFull(puppy) ) {
 
-            message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi missing data");
+            message.put ( "delition", puppy.getOwner() + "'s tamagotchi missing data");
             return message;
         }
 
@@ -176,16 +176,8 @@ public class TamagotchiServiceImpl implements TamagotchiService {
             return message;
         }
 
-
-        //Dynamic message based on state
-        if ( status.equals(PuppyStatus.ABANDONED.value()) ) 
-            message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi is homeless" );
-        
-            
-        /*if ( status.equals(PuppyStatus.DIED.value()) )
-            message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi has perished" );*/
-           
-         return message;
+        message.put ( "delition", "" + puppy.getOwner() + "'s tamagotchi deleted" );
+        return message;
     }
     //;;;;;;;;;;;;;;;;;;;;;;;;
 

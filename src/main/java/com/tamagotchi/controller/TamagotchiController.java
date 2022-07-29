@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tamagotchi.entity.Puppy;
-import com.tamagotchi.models.PuppyStatus;
 import com.tamagotchi.service.TamagotchiService;
 
 @RestController
@@ -56,9 +55,7 @@ public class TamagotchiController {
     @DeleteMapping ( "/abandon" )
     public Map < String, String > thisTamagotchiIsHomeless ( @RequestBody Puppy puppy ){
 
-        String status = PuppyStatus.ABANDONED.value();
-
-        return tamagotchiService.murderThePuppy(puppy, status);
+        return tamagotchiService.murderThePuppy(puppy );
     }
 
 

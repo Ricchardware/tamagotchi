@@ -17,7 +17,7 @@ public interface TamagotchiService {
     public Map < String, List < String > > howIsThePuppy ( Puppy puppy );
 
     //DELETE
-    public Map < String, String > murderThePuppy ( Puppy puppy, String status );
+    public Map < String, String > murderThePuppy ( Puppy puppy  );
 
 
     
