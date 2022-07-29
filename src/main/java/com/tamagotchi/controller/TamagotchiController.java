@@ -32,7 +32,7 @@ public class TamagotchiController {
     }
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
+    // TODO:CULO
 
     //READ::::::::::::::::::::::::::::::::
     @GetMapping ( "/cutest")
