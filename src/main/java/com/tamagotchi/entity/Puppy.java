@@ -21,7 +21,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults ( level = AccessLevel.PRIVATE)
 public class Puppy {
 
-/*
+/*  
+        * JSON
     {
         "name" : "",
         "owner" : "",
@@ -42,6 +43,9 @@ public class Puppy {
 
     @Column ( name = "clothing_id", nullable = false )
     int clothing;
+
+    @Column ( name = "status" )
+    String status;
 
     @Column ( name = "happiness" )
     int happiness;
