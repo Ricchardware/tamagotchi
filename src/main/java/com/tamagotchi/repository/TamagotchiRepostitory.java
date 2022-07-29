@@ -12,6 +12,7 @@ public interface TamagotchiRepostitory extends JpaRepository < Puppy, Integer > 
     @Transactional
     void deleteByNameAndOwner(String name, String owner);
 
+    @Transactional
     Puppy findByNameAndOwner(String name, String owner );
     
 }

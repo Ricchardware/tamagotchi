@@ -9,7 +9,15 @@ public interface TamagotchiService {
     //CREATE
     public Map < String, Puppy> aNewPuppyIsBorn ( Puppy puppy );
 
+    //READ
+    public Map < String, Puppy > gimmeThePuppy ( Puppy puppy );
+
+    //UPDATE
+    public Map < String, Puppy > howIsThePuppy ( Puppy puppy );
+
     //DELETE
     public Map < String, String > murderThePuppy ( Puppy puppy, String status );
+
+
     
 }

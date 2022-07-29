@@ -62,4 +62,6 @@ public class Puppy {
     @Column ( name = "moment_that_it_played" )
     Timestamp play;
     
+    @Column ( name = "moment_that_it_washed" )
+    Timestamp wash;
 }

@@ -41,6 +41,17 @@ public class TamagotchiServiceImpl implements TamagotchiService {
         }
 
 
+
+        // ? If the owner already has a puppy, this condition will inform the user of the situation
+        // ?  to manage this front end needs to ask for confirm and if its confirmed, needs to call
+        // ?  thisTamagotchiIsHomeless to delete the current puppy and then call givingABirth again
+        if ( tamagotchiRepostitory.findByNameAndOwner(puppy.getName(), puppy.getOwner()) != null){
+
+            message.put ( "This owner already has a puppy: ask for connfirm on overwrting", puppy );
+            return message;
+        }
+        
+
         //The puppy gets ready to be saved
         puppy = fillAllPuppyParameters(puppy);
 
@@ -56,10 +67,47 @@ public class TamagotchiServiceImpl implements TamagotchiService {
         //If everything went well we re saying to the user that the tamagotchi is created
         message.put ( "Tamagotchi created", puppy);
         return message;
-        
     }
     //;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+
+    //READ:::::::::::::::::::::
+    @Override
+    public Map < String, Puppy > gimmeThePuppy ( Puppy puppy ){
+
+        Map < String, Puppy > message = new HashMap<>();
+
+        Puppy tamagotchi = tamagotchiRepostitory.findByNameAndOwner(puppy.getName(), puppy.getOwner());
+
+        if ( tamagotchi == null ) {
+
+            message.put ( "Your Tamagotchi couldn t be found", tamagotchi );
+            return message;
+        }
+
+        message.put ( "Your Tamagotchi:", tamagotchi ); 
+        return message;
+    }
+    //;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+    //UPDATE:::::::::::::::::::::
+    @Override 
+    public Map < String, Puppy > howIsThePuppy ( Puppy puppy ){
+
+        Map < String, Puppy > message = new HashMap<>();
+
+        Puppy tamagotchi = tamagotchiRepostitory.findByNameAndOwner(puppy.getName(), puppy.getOwner());
+        
+        
+        
+
+        message.put ( puppy.getStatus(), tamagotchi);
+
+        return message;
+    }
 
     //DELETE:::::::::::::::::::
     @Override
