@@ -22,7 +22,7 @@ import lombok.experimental.FieldDefaults;
 public class Puppy {
 
 /*  
-        * JSON for tests
+        * JSON for tests to fill
     {
         "name" : "",
         "owner" : "",
